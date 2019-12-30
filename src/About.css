@@ -1,0 +1,48 @@
+.about {
+  width: 85%;
+}
+
+.back-about {
+  width: 1%;
+  cursor: pointer;
+  margin: 5% auto 2.5% 0;
+}
+
+.about-text {
+  width: 85%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 2% 0;
+}
+
+@media (max-width: 960px) {
+  .back-about {
+    width: 1.5%;
+  }
+}
+
+@media (max-width: 760px) {
+  .back-about {
+    width: 2%;
+  }
+
+  .about-text {
+    height: 50vh;
+    margin: 2% 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .back-about {
+    width: 3%;
+    margin: 5% auto 20% 0;
+  }
+
+  .about-text {
+    height: 40vh;
+    margin: 2% 0;
+  }
+}
