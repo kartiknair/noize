@@ -23,7 +23,6 @@ function SongPage(props) {
       <div className="song-page">
         <video className="page-image" autoPlay loop muted playsInline>
           <source src={require(`${props.isrc}.mp4`)} type="video/mp4" />
-          <img src={require(`${props.isrc}.gif`)} alt="Relaxing GIF" />
         </video>
         <h3 className="song-title-page">{props.title}</h3>
         <div className="audio-player">
