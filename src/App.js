@@ -12,6 +12,7 @@ class App extends Component {
       song: false,
       isrc: "",
       asrc: "",
+      error: false,
       title: ""
     };
     this.songClicked = this.songClicked.bind(this);
@@ -19,11 +20,12 @@ class App extends Component {
     this.aboutClicked = this.aboutClicked.bind(this);
   }
 
-  songClicked(audio, image, name) {
+  songClicked(audio, image, name, err) {
     this.setState({
       asrc: audio,
       isrc: image,
       title: name,
+      error: err,
       song: true
     });
   }
@@ -42,6 +44,27 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    window.history.pushState(
+      { name: "browserBack" },
+      "on browser back click",
+      window.location.href
+    );
+
+    window.addEventListener(
+      "popstate",
+      e => {
+        if (e.state && (this.state.song || this.state.about)) {
+          this.setState({
+            song: false,
+            about: false
+          });
+        }
+      },
+      false
+    );
+  }
+
   render() {
     if (this.state.song) {
       return (
@@ -51,6 +74,7 @@ class App extends Component {
             asrc={this.state.asrc}
             title={this.state.title}
             backClicked={this.backClicked}
+            error={this.state.error}
           />
         </div>
       );

@@ -21,14 +21,21 @@ function SongPage(props) {
         ></path>
       </svg>
       <div className="song-page">
-        <video className="page-image" autoPlay loop muted playsInline>
-          <source src={require(`${props.isrc}.mp4`)} type="video/mp4" />
-        </video>
+        {props.error ? (
+          <img
+            src={require(`${props.isrc}.gif`)}
+            alt="Relaxing GIF"
+            className="page-image"
+          />
+        ) : (
+          <video className="page-image" autoPlay loop muted playsInline>
+            <source src={require(`${props.isrc}.mp4`)} type="video/mp4" />
+          </video>
+        )}
+
         <h3 className="song-title-page">{props.title}</h3>
         <div className="audio-player">
-          <audio src={props.asrc} controls>
-            <source src="" type="audio/mpeg" />
-          </audio>
+          <audio src={props.asrc} controls type="audio/mpeg"></audio>
         </div>
       </div>
     </div>
